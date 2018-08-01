@@ -211,6 +211,20 @@ label[for='toggle-all'] {
     text-decoration: line-through;
 }
 
+.todo-list li .icon {
+    position: absolute;
+    top: 0;
+    right: 40px;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 11px;
+}
+
+.todo-list li .icon svg {
+    preserve-aspect-ratio: none;
+}
+
 .todo-list li .destroy {
     display: none;
     position: absolute;
