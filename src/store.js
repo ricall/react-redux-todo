@@ -5,7 +5,6 @@ import createHistory from "history/createHashHistory";
 import rootReducer from './reducers';
 import rootSaga from './sagas';
 
-
 export const history = createHistory();
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

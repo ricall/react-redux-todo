@@ -1,10 +1,9 @@
+import { delay } from 'redux-saga';
 import { fork, takeLatest, put, call, select } from 'redux-saga/effects';
 import fetch from 'isomorphic-fetch';
 import store from 'store';
 import actions, { types } from '../actions';
 import { getItems } from '../selectors';
-
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const writeItems = items => store.set('items', items);
 
@@ -22,7 +21,7 @@ function* chuckNorrisQuerySaga() {
 }
 
 function* saveState() {
-  yield delay(500);
+  yield delay(2000);
   const items = yield select(getItems);
   yield call(writeItems, items);
 }
