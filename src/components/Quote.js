@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { quote } from '../selectors';
+import { getQuote } from '../selectors';
 
 const Quote = ({ text }) => (
   <div className="quote">
@@ -13,7 +13,7 @@ Quote.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  text: quote(state) || '',
+  text: getQuote(state) || '',
 });
 
 export default connect(mapStateToProps)(Quote);

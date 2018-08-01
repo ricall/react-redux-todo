@@ -1,13 +1,22 @@
-export const editText = state => state.todo.edit;
+import { createSelector } from 'reselect';
 
+export const getEditText = state => state.todo.edit;
 export const isVisible = state => state.todo.visible;
+export const getItems = state => state.todo.items;
+export const getFilter = (_, props) => props.match.params.filter || '';
+export const getQuote = state => state.todo.quote;
 
-export const countOfItems = state => state.todo.items.length;
-export const countOfCompletedItems = state => state.todo.items.filter(item => item.completed).length;
+export const countOfItems = createSelector(
+  getItems,
+  items => items.length,
+);
 
-export const filterFromProps = props => props.match.params.filter;
+export const countOfCompletedItems = createSelector(
+  getItems,
+  items => items.filter(item => item.completed).length,
+);
 
-const filterOn = (filter) => {
+const filterFor = (filter) => {
   switch(filter) {
     case 'active':
       return item => !item.completed;
@@ -17,6 +26,13 @@ const filterOn = (filter) => {
       return () => true;
   }
 };
-export const filteredItems = (state, filter) => state.todo.items.filter(filterOn(filter));
 
-export const quote = state => state.todo.quote;
+export const getFilteredItems = createSelector(
+  [getItems, getFilter],
+  (items, filter) => items.filter(filterFor(filter)),
+);
+
+export const getFilteredItemsCount = createSelector(
+  getFilteredItems,
+  items => items.length,
+);

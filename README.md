@@ -5,8 +5,13 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 ## Table of Contents
 
+- [Try it Out](#try-it-out)
 - [Getting Started](#getting-started)
 - [Outstanding Work](#outstanding-work)
+
+## Try It Out
+
+You can access the application online here: https://richard-allwood.github.io/react-redux-todo/
 
 
 ## Getting Started

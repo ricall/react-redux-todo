@@ -17,6 +17,11 @@ const initialState = {
       completed: true
     },
     {
+      id: '1bf3f3b0-92f9-11e8-96fb-03ee9f402465',
+      title: 'Add reselect into the application',
+      completed: true
+    },
+    {
       id: '357c9830-92f9-11e8-96fb-03ee9f402465',
       title: 'Add tests',
       completed: false

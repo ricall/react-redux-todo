@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { editText } from '../selectors';
+import { getEditText } from '../selectors';
 import actions from '../actions';
 
 const Header = ({ value, onKeyDown, onChange }) => (
@@ -24,7 +24,7 @@ Header.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  value: editText(state),
+  value: getEditText(state),
 });
 
 const mapDispatchToProps = dispatch => ({
