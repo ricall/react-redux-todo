@@ -1,8 +1,12 @@
-import { put, call } from 'redux-saga/effects';
+import { fork, takeLatest, put, call, select } from 'redux-saga/effects';
 import fetch from 'isomorphic-fetch';
-import actions from '../actions';
+import store from 'store';
+import actions, { types } from '../actions';
+import { getItems } from '../selectors';
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+const writeItems = items => store.set('items', items);
 
 function* chuckNorrisQuerySaga() {
   while (true) {
@@ -17,4 +21,22 @@ function* chuckNorrisQuerySaga() {
   }
 }
 
-export default chuckNorrisQuerySaga;
+function* saveState() {
+  yield delay(500);
+  const items = yield select(getItems);
+  yield call(writeItems, items);
+}
+
+function* rootSaga() {
+  yield fork(chuckNorrisQuerySaga);
+  yield takeLatest([
+    types.ADD,
+    types.TOGGLE_ITEM,
+    types.UPDATE_ITEM,
+    types.REMOVE_ITEM,
+    types.CLEAR_COMPLETED,
+    types.DRAG_END
+  ], saveState)
+}
+
+export default rootSaga;

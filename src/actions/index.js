@@ -9,6 +9,7 @@ export const types = createTypes([
   'REMOVE_ITEM',
   'UPDATE_ITEM',
   'CLEAR_COMPLETED',
+  'DRAG_END',
   'CHUCK_NORRIS_QUOTE'
 ], '@@TODO');
 
@@ -22,6 +23,7 @@ export default {
   removeItem: actionCreator(types.REMOVE_ITEM, 'id'),
   updateItem: actionCreator(types.UPDATE_ITEM, 'id', 'text'),
   clearCompleted: actionCreator(types.CLEAR_COMPLETED),
+  dragEnd: actionCreator(types.DRAG_END, 'result'),
 
   chuckNorrisQuote: actionCreator(types.CHUCK_NORRIS_QUOTE, 'text'),
 };
