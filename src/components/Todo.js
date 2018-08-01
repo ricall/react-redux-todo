@@ -5,7 +5,6 @@ import { getFilter, getFilteredItems, getFilteredItemsCount } from '../selectors
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import Quote from './Quote';
 
 const Todo = ({ filter, items, itemCount }) => {
   return (
@@ -13,7 +12,6 @@ const Todo = ({ filter, items, itemCount }) => {
       <Header />
       <Main filter={filter} items={items} />
       <Footer filter={filter} itemCount={itemCount} />
-      <Quote />
     </div>
   )
 };

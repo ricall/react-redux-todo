@@ -1,6 +1,7 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import Icon from './Icon';
 
 class TodoItem extends Component {
 
@@ -22,7 +23,8 @@ class TodoItem extends Component {
 
   render() {
     const { item, onToggleItem, onEditItem, onRemoveItem, onUpdateItem} = this.props;
-    const { id, completed, editing, title, editText } = item;
+    const { id, completed, editing, title, editText, icon} = item;
+
     return (
       <li className={classNames({
         completed: completed,
@@ -38,6 +40,7 @@ class TodoItem extends Component {
           <label onDoubleClick={() => onEditItem(id)}>
             {title}
           </label>
+          <Icon icon={icon}/>
           <button className="destroy" onClick={() => onRemoveItem(id)} />
         </div>
         <input

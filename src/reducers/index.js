@@ -1,6 +1,5 @@
 import { types } from '../actions';
 import store from 'store';
-import uuid from 'uuid/v1';
 
 const items = store.get('items') || [
   {
@@ -40,9 +39,6 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case types.CHUCK_NORRIS_QUOTE:
-      return { ...state, quote: payload.text };
-
     case types.EDIT:
       return { ...state, edit: payload.text };
     case types.ADD:
@@ -52,7 +48,7 @@ const reducer = (state = initialState, action) => {
         items: [
           ...state.items,
           {
-            id: uuid(),
+            id: payload.id,
             title: payload.text,
             completed: false,
           }
@@ -71,6 +67,10 @@ const reducer = (state = initialState, action) => {
       return { ...state, items: state.items.map(item => item.id === payload.id
         ? { ...item, editing: false, title: payload.text }
         : item)};
+    case types.UPDATE_ITEM_ICON:
+      return { ...state, items: state.items.map(item => item.id === payload.id
+        ? { ...item, icon: payload.icon }
+        : item)}
     case types.REMOVE_ITEM:
       return { ...state, items: state.items.filter(item => item.id !== payload.id) };
     case types.CLEAR_COMPLETED:

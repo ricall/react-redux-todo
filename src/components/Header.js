@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import uuid from 'uuid/v1';
 import { getEditText } from '../selectors';
 import actions from '../actions';
 
@@ -34,7 +35,7 @@ const mapDispatchToProps = dispatch => ({
       return;
     }
     e.preventDefault();
-    dispatch(actions.addItem(e.target.value));
+    dispatch(actions.addItem(uuid(), e.target.value));
   }
 });
 
